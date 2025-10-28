@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "create_delhified:block/dm_casing/dm_gray_arrow_casing_right"
+		},
+		"facing=east": {
+			"model": "create_delhified:block/dm_casing/dm_gray_arrow_casing_right",
+			"y": 90
+		},
+		"facing=south": {
+			"model": "create_delhified:block/dm_casing/dm_gray_arrow_casing_right",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "create_delhified:block/dm_casing/dm_gray_arrow_casing_right",
+			"y": 270
+		}
+	}
+}

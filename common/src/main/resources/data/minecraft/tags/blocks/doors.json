@@ -1,0 +1,20 @@
+{
+  "values": [
+    "create_delhified:door_dm_red",
+    "create_delhified:door_dm_yellow",
+    "create_delhified:door_dm_blue",
+    "create_delhified:door_dm_violet",
+    "create_delhified:door_dm_pink",
+    "create_delhified:door_dm_magenta",
+    "create_delhified:door_dm_light_gray",
+    "create_delhified:door_dm_gray",
+    "create_delhified:door_cab_dm_red",
+    "create_delhified:door_cab_dm_yellow",
+    "create_delhified:door_cab_dm_blue",
+    "create_delhified:door_cab_dm_violet",
+    "create_delhified:door_cab_dm_pink",
+    "create_delhified:door_cab_dm_magenta",
+    "create_delhified:door_cab_dm_light_gray",
+    "create_delhified:door_cab_dm_gray"
+  ]
+}

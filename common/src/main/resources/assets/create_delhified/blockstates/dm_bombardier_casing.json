@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "create_delhified:block/dm_casing/dm_bombardier_casing"
+		}
+	}
+}

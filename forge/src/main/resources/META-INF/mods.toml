@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[${forge_version},)"
+issueTrackerURL = "https://github.com/AppleCiderLmao/Create-Delhi-fied/issues/"
+license = "MIT"
+
+[[mods]]
+modId = "create_delhified"
+version = "${version}"
+displayName = "Create: Delhi-fied"
+authors = "LiterallyAple"
+description = "Delhi Metro in Create?!"
+logoFile = "icon.png"
+
+[[dependencies.create_delhified]]
+modId = "forge"
+mandatory = true
+versionRange = "[${forge_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.create_delhified]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.create_delhified]]
+modId="create"
+mandatory=true
+versionRange="${create_version}"
+ordering="NONE"
+side="BOTH"
