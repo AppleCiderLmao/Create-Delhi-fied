@@ -9,7 +9,8 @@ pluginManagement {
 }
 
 include("common")
-include("fabric")
+// Fabric support is discontinued until I update to 6.0.7
+// include("fabric")
 include("forge")
 
 rootProject.name = "Create-Delhi-fied"
