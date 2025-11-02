@@ -1,6 +1,6 @@
 package net.literallyapple.create_delhified.registry;
 
-import com.simibubi.create.foundation.utility.Lang;
+import net.createmod.catnip.lang.Lang;
 import net.literallyapple.create_delhified.CreateDelhified;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

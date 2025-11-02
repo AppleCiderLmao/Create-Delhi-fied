@@ -1,7 +1,7 @@
 package net.literallyapple.create_delhified.blocks.behaviour.SlidingDoor;
 
 import com.simibubi.create.content.contraptions.Contraption;
-import com.simibubi.create.content.contraptions.behaviour.MovementBehaviour;
+import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.simibubi.create.content.contraptions.elevator.ElevatorColumn;
 import com.simibubi.create.content.contraptions.elevator.ElevatorContraption;
@@ -11,7 +11,7 @@ import com.simibubi.create.content.trains.entity.Carriage;
 import com.simibubi.create.content.trains.entity.CarriageContraptionEntity;
 import com.simibubi.create.content.trains.station.GlobalStation;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
-import com.simibubi.create.foundation.utility.animation.LerpedFloat;
+import net.createmod.catnip.animation.LerpedFloat;
 import net.literallyapple.create_delhified.blocks.doors.SlidingDoor.LineSlidingDoorBlock;
 import net.literallyapple.create_delhified.blocks.doors.SlidingDoor.LineSlidingDoorBlockEntity;
 import net.literallyapple.create_delhified.core.utils.LineSlidingDoorProperties;
@@ -37,7 +37,7 @@ import java.util.TimerTask;
 
 
 public class LineSlidingDoorMovementBehaviour implements MovementBehaviour {
-    LineSlidingDoorProperties tsdp;
+    LineSlidingDoorProperties lsdp;
     String type;
 
     public LineSlidingDoorMovementBehaviour(String type) {
@@ -56,14 +56,14 @@ public class LineSlidingDoorMovementBehaviour implements MovementBehaviour {
             tickOpen(context, open);
 
         int sound = 0; // DMRCSlidingDoorBlockEntity.getDoorSoundValue(structureBlockInfo.state());
-        tsdp = new LineSlidingDoorProperties(SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_DOOR_CLOSE, .075f);
+        lsdp = new LineSlidingDoorProperties(SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_DOOR_CLOSE, .075f);
 
         Map<BlockPos, BlockEntity> tes = context.contraption.presentBlockEntities;
-        if (!(tes.get(context.localPos) instanceof LineSlidingDoorBlockEntity tsdbe))
+        if (!(tes.get(context.localPos) instanceof LineSlidingDoorBlockEntity lsdbe))
             return;
-        boolean wasSettled = tsdbe.animation.settled();
-        tsdbe.animation.chase(open ? 1 : 0, tsdp.GetSpeed(), LerpedFloat.Chaser.LINEAR);
-        tsdbe.animation.tickChaser();
+        boolean wasSettled = lsdbe.animation.settled();
+        lsdbe.animation.chase(open ? 1 : 0, lsdp.GetSpeed(), LerpedFloat.Chaser.LINEAR);
+        lsdbe.animation.tickChaser();
 
         TimerTask closeTask = new TimerTask() {
             @Override
@@ -80,25 +80,25 @@ public class LineSlidingDoorMovementBehaviour implements MovementBehaviour {
 
         if  (LineSlidingDoorBlock.isDoubleDoor(structureBlockInfo.state().getValue(LineSlidingDoorBlock.HINGE), context.localPos, context.state.getValue(LineSlidingDoorBlock.FACING), context)) {
             if (structureBlockInfo.state().getValue(LineSlidingDoorBlock.HINGE) == DoorHingeSide.RIGHT) {
-                if (wasSettled && !tsdbe.animation.settled() && !open && sound != 1) {
+                if (wasSettled && !lsdbe.animation.settled() && !open && sound != 1) {
                     context.world.playLocalSound(context.position.x, context.position.y, context.position.z,
-                            tsdp.GetClose(), SoundSource.BLOCKS, 1f, 1, false);
+                            lsdp.GetClose(), SoundSource.BLOCKS, 1f, 1, false);
                 }
 
-                if (wasSettled && !tsdbe.animation.settled() && open && sound != 1) {
+                if (wasSettled && !lsdbe.animation.settled() && open && sound != 1) {
                     context.world.playLocalSound(context.position.x, context.position.y, context.position.z,
-                            tsdp.GetOpen(), SoundSource.BLOCKS, 1f, 1, false);
+                            lsdp.GetOpen(), SoundSource.BLOCKS, 1f, 1, false);
                 }
             }
         } else {
-            if (wasSettled && !tsdbe.animation.settled() && !open && sound != 1) {
+            if (wasSettled && !lsdbe.animation.settled() && !open && sound != 1) {
                 context.world.playLocalSound(context.position.x, context.position.y, context.position.z,
-                        tsdp.GetClose(), SoundSource.BLOCKS, 1f, 1, false);
+                        lsdp.GetClose(), SoundSource.BLOCKS, 1f, 1, false);
             }
 
-            if (wasSettled && !tsdbe.animation.settled() && open && sound != 1) {
+            if (wasSettled && !lsdbe.animation.settled() && open && sound != 1) {
                 context.world.playLocalSound(context.position.x, context.position.y, context.position.z,
-                        tsdp.GetOpen(), SoundSource.BLOCKS, 1f, 1, false);
+                        lsdp.GetOpen(), SoundSource.BLOCKS, 1f, 1, false);
             }
         }
     }
@@ -268,11 +268,6 @@ public class LineSlidingDoorMovementBehaviour implements MovementBehaviour {
         Vec3 directionVec = Vec3.atLowerCornerOf(originalFacing.getNormal());
         directionVec = context.rotation.apply(directionVec);
         return Direction.getNearest(directionVec.x, directionVec.y, directionVec.z);
-    }
-
-    @Override
-    public boolean renderAsNormalBlockEntity() {
-        return true;
     }
 
     @Override
