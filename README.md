@@ -21,7 +21,7 @@ More features coming soon! :)
 | Mod | Version                              |
 |-----|--------------------------------------|
 | Minecraft | 1.20.1 (1.21.1 support coming soon!) |
-| **Create** | 0.5.1.j (0.6 support coming soon!)   |
+| **Create** | 0.5.1.j and 6.0.6+ (builds with "-C6" at end of version number support Create 6.0.6+)   |
 | Forge/Fabric | Supported builds in releases         |
 
 ## ⚠️ Heads up
