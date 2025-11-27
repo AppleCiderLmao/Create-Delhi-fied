@@ -31,3 +31,10 @@ mandatory=true
 versionRange="${create_version}"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies.create_delhified]]
+modId="architectury"
+mandatory=true
+versionRange="${architectury_api_version}"
+ordering="AFTER"
+side="BOTH"
