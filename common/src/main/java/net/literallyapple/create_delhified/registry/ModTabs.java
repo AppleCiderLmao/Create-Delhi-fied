@@ -16,10 +16,6 @@ public class ModTabs {
 
     public static final DeferredRegister<CreativeModeTab> TAB_REGISTER = DeferredRegister.create(CreateDelhified.MOD_ID, Registries.CREATIVE_MODE_TAB);
 
-    // public static RegistryEntry<CreativeModeTab> CREATE_DMRC_BLOCKS_TAB = REGISTRATE
-    //         .defaultCreativeTab("create_dmrc_blocks_tab")
-    //         .register();
-
     public static final RegistrySupplier<CreativeModeTab> CREATE_DELHIFIED_BLOCKS_TAB =
             TAB_REGISTER.register(new ResourceLocation(CreateDelhified.MOD_ID, "blocks_tab"),
                     () -> CreativeTabRegistry.create(
