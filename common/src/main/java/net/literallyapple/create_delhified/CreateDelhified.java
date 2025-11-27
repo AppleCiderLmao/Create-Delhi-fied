@@ -32,6 +32,7 @@ public class CreateDelhified {
         ModBlockEntities.init();
         ModTags.init();
         ModPartialModels.init();
+        CreateDelhifiedBogeyStyles.init();
     }
 
     public static ResourceLocation id(String path) {

@@ -4,7 +4,9 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.palettes.ConnectedGlassBlock;
 import com.simibubi.create.foundation.block.connected.ConnectedTextureBehaviour;
+import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
@@ -12,6 +14,7 @@ import net.literallyapple.create_delhified.CreateDelhified;
 import net.literallyapple.create_delhified.blocks.LineBlock;
 import net.literallyapple.create_delhified.blocks.behaviour.SlidingDoor.LineSlidingDoorMovementBehaviour;
 import net.literallyapple.create_delhified.blocks.behaviour.SlidingDoor.LineSlidingDoorMovingInteraction;
+import net.literallyapple.create_delhified.blocks.bogey.DMBogeyBlock;
 import net.literallyapple.create_delhified.blocks.doors.SlidingDoor.LineSlidingDoorBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -102,6 +105,19 @@ public class CreateDelhifiedBuilderTransformers {
                 .tab(ModTabs.CREATE_DELHIFIED_BLOCKS_TAB.getKey())
                 .build()
                 .register();
+    }
+
+    public static <B extends DMBogeyBlock, P> NonNullUnaryOperator<BlockBuilder<B, P>> bogey() {
+        return b -> b.initialProperties(SharedProperties::softMetal)
+                .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .transform(pickaxeOnly())
+                .blockstate((c, p) -> BlockStateGen.horizontalAxisBlock(c, p, s -> p.models()
+                        .getExistingFile(p.modLoc("block/bogie/top"))))
+                .loot((p, l) -> p.dropOther(l, AllBlocks.RAILWAY_CASING.get()))
+                .tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag);
     }
 
     public static <B extends LineSlidingDoorBlock, P> NonNullUnaryOperator<BlockBuilder<B, P>> slidingDoor(String type) {

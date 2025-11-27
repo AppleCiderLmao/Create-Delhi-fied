@@ -7,6 +7,8 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.literallyapple.create_delhified.CreateDelhified;
 import net.literallyapple.create_delhified.blocks.LineBlock;
 import net.literallyapple.create_delhified.blocks.doors.SlidingDoor.LineSlidingDoorBlock;
+import net.literallyapple.create_delhified.content.bogeys.block.DoubleAxleBogeyBlock;
+import net.literallyapple.create_delhified.content.bogeys.block.LargeDoubleAxleBogeyBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.MapColor;
@@ -164,6 +166,19 @@ public class ModBlocks {
 
     public static final BlockEntry<LineBlock> DM_LIGHT_GRAY_ARROW_CASING_RIGHT =
             CreateDelhifiedBuilderTransformers.LineBlock("dm_light_gray_arrow_casing_right", MapColor.COLOR_LIGHT_GRAY);
+
+    // Bogeys
+    public static final BlockEntry<DoubleAxleBogeyBlock> DOUBLEAXLE_BOGEY_BLOCK =
+        REGISTRATE.block("doubleaxle_bogey", DoubleAxleBogeyBlock::new)
+            .transform(CreateDelhifiedBuilderTransformers.bogey())
+            .lang("Double Axle Bogey")
+            .register();
+
+    public static final BlockEntry<LargeDoubleAxleBogeyBlock> LARGE_DOUBLEAXLE_BOGEY_BLOCK =
+        REGISTRATE.block("large_doubleaxle_bogey", LargeDoubleAxleBogeyBlock::new)
+            .transform(CreateDelhifiedBuilderTransformers.bogey())
+            .lang("Large Double Axle Bogey")
+            .register();
 
 	public static void init() {
 		// load the class and register everything
