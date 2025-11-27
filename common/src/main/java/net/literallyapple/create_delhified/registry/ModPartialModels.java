@@ -1,7 +1,7 @@
 package net.literallyapple.create_delhified.registry;
 
-import com.jozufozu.flywheel.core.PartialModel;
-import com.simibubi.create.foundation.utility.Couple;
+import dev.engine_room.flywheel.lib.model.baked.PartialModel;
+import net.createmod.catnip.data.Couple;
 import net.literallyapple.create_delhified.CreateDelhified;
 import net.minecraft.resources.ResourceLocation;
 
@@ -21,7 +21,7 @@ public class ModPartialModels {
     }
 
     private static PartialModel block(String path) {
-        return new PartialModel(CreateDelhified.id("block/" + path));
+        return PartialModel.of(CreateDelhified.id("block/" + path));
     }
 
     public static void init() {

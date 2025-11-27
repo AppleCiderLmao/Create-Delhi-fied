@@ -28,8 +28,8 @@ import net.minecraft.world.level.material.MapColor;
 
 import java.util.function.Supplier;
 
-import static com.simibubi.create.AllInteractionBehaviours.interactionBehaviour;
-import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
+import static com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour.interactionBehaviour;
+import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
 import static com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock.GLASS_SET_TYPE;
 import static com.simibubi.create.foundation.data.CreateRegistrate.connectedTextures;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
@@ -88,12 +88,13 @@ public class CreateDelhifiedBuilderTransformers {
                 .register();
     }
 
-    public static BlockEntry<LineBlock> DMWindowedCasingBlock(String name, Block glassBlock) {
+    public static BlockEntry<ConnectedGlassBlock> ConnectedDMCasingBlock(String id, Supplier<ConnectedTextureBehaviour> behaviour, Block stainedBlock) {
         return REGISTRATE
-                .block(name, LineBlock::new)
-                .addLayer(() -> RenderType::translucent)
-                .initialProperties(() -> Blocks.GLASS)
-                .properties(p -> p.sound(SoundType.GLASS))
+                .block(id, ConnectedGlassBlock::new)
+                .onRegister(connectedTextures(behaviour))
+                .initialProperties(() -> stainedBlock)
+                .properties((p) -> p.isValidSpawn(CreateDelhifiedBuilderTransformers::never)
+                        .isRedstoneConductor(CreateDelhifiedBuilderTransformers::never))
                 .transform(pickaxeOnly())
                 .tag(ModTags.AllBlockTags.FRAMEABLE.tag)
                 .loot((lr, block) -> lr.add(block, lr.createSingleItemTable(block)))

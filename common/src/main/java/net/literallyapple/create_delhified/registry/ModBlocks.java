@@ -70,6 +70,12 @@ public class ModBlocks {
             CreateDelhifiedBuilderTransformers.DMSlidingDoor("cab_dm_gray", false, MapColor.METAL);
 
     // Blocks
+    public static final BlockEntry<Block> DM_CASING =
+            CreateDelhifiedBuilderTransformers.DefaultBlock("dm_casing", MapColor.TERRACOTTA_WHITE);
+
+    public static final BlockEntry<LineBlock> DM_LOGO_CASING =
+            CreateDelhifiedBuilderTransformers.LineBlock("dm_logo_casing", MapColor.TERRACOTTA_WHITE);
+
     public static final BlockEntry<ConnectedGlassBlock> DM_WINDOWED_CASING =
             CreateDelhifiedBuilderTransformers.ConnectedDMWindowedCasingBlock("dm_windowed_casing",
                     () -> new SimpleCTBehaviour(CreateDelhifiedSpriteShifts.DM_WINDOWED_CASING), Blocks.BLACK_STAINED_GLASS);
@@ -77,20 +83,15 @@ public class ModBlocks {
     public static final BlockEntry<Block> DM_BOMBARDIER_CASING =
             CreateDelhifiedBuilderTransformers.DefaultBlock("dm_bombardier_casing", MapColor.TERRACOTTA_WHITE);
 
-    public static final BlockEntry<Block> DM_CASING =
-            CreateDelhifiedBuilderTransformers.DefaultBlock("dm_casing", MapColor.TERRACOTTA_WHITE);
-
     public static final BlockEntry<LineBlock> DM_BOMBARDIER_LOGO_CASING =
             CreateDelhifiedBuilderTransformers.LineBlock("dm_bombardier_logo_casing", MapColor.TERRACOTTA_WHITE);
 
     public static final BlockEntry<Block> DM_ROOF_CASING =
             CreateDelhifiedBuilderTransformers.DefaultBlock("dm_roof_casing", MapColor.TERRACOTTA_WHITE);
 
-    public static final BlockEntry<Block> DM_HLVC_VENT_CASING =
-            CreateDelhifiedBuilderTransformers.DefaultBlock("dm_hlvc_vent_casing", MapColor.TERRACOTTA_WHITE);
-
-    public static final BlockEntry<LineBlock> DM_LOGO_CASING =
-            CreateDelhifiedBuilderTransformers.LineBlock("dm_logo_casing", MapColor.TERRACOTTA_WHITE);
+    public static final BlockEntry<ConnectedGlassBlock> DM_HLVC_VENT_CASING =
+            CreateDelhifiedBuilderTransformers.ConnectedDMCasingBlock("dm_hlvc_vent_casing",
+                    () -> new SimpleCTBehaviour(CreateDelhifiedSpriteShifts.DM_HLVC_VENT_CASING), Blocks.WHITE_TERRACOTTA);
 
     public static final BlockEntry<LineBlock> DM_RED_LINE_CASING =
             CreateDelhifiedBuilderTransformers.LineBlock("dm_red_line_casing", MapColor.COLOR_RED);
